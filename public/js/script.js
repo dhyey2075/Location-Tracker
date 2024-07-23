@@ -6,11 +6,17 @@ if (!name) {
     alert("Name is required");
     location.reload();
 }
+const names = {};
+const nameContainer = document.querySelector("#names");
+
+let latitude = null;
+let longitude = null;
 
 if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
         (position) => {
-            const { latitude, longitude } = position.coords;
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
             socket.emit("send-location", { latitude, longitude, name });
         },
         (error) => {
@@ -42,6 +48,11 @@ socket.on("receive-location", (data) => {
         marker.bindPopup(name).openPopup();
         markers[id] = marker;
     }
+    if(!names[id]){
+        names[id] = name;
+        console.log(names);
+        nameContainer.innerHTML += `<li>${name}</li>`;
+    }
 });
 
 socket.on("remove-location", (data) => {
@@ -49,5 +60,24 @@ socket.on("remove-location", (data) => {
     if (markers[id]) {
         map.removeLayer(markers[id]);
         delete markers[id];
+        delete names[id];
     }
+});
+let lat = null;
+let lng = null;
+let waypoint = [L.latLng(latitude, longitude),L.latLng(lat, lng)];
+
+map.on("click", (e) => {
+    lat = e.latlng.lat;
+    lng = e.latlng.lng;
+
+    console.log(lat, lng);
+    console.log("My location", { latitude, longitude });
+    
+    L.Routing.control({
+        waypoints: [
+            L.latLng(latitude, longitude),
+            L.latLng(lat, lng)
+        ],
+    }).addTo(map);
 });

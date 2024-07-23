@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Locator- By Dhyey</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <link rel="icon" href="https://www.google.com/imgres?q=locator%20icon&imgurl=https%3A%2F%2Fe7.pngegg.com%2Fpngimages%2F169%2F109%2Fpng-clipart-black-and-red-location-app-icon-drawing-pin-world-map-logo-push-heart-pin.png&imgrefurl=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fpng-zdvkr&docid=qqxopsjAdQF-yM&tbnid=4O68BZ3PomtiTM&vet=12ahUKEwjRmtKP3r2HAxU6RmwGHbUlAR4QM3oECBkQAA..i&w=900&h=900&hcb=2&ved=2ahUKEwjRmtKP3r2HAxU6RmwGHbUlAR4QM3oECBkQAA" type="image/icon type">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div id="map">
-        Hello World
+    <div class="container flex">
+        <div id="map">
+            Hello World
+        </div>
+        <div class="box">
+            <h2>Connected Users</h2>
+            <div id="names">
+
+            </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet-src.min.js" integrity="sha512-3/WyQrhTdqSVmSifQS62akgtNBhZha2lS44TnoN9Jk3J01FvsKK4suVmz6t5FtccGb5iJw58GoFhBjPE5EPc8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
 
